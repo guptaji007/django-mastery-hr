@@ -1,0 +1,78 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HR Agency |{% block title %} Base Page {% endblock title %}</title>
+    <!-- Bootstrap 5.3 CSS CDN-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <!-- FontAwesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+    <!-- Logo -->
+    <link rel="shortcut icon" href="{% static 'images/logo.ico' %}" type="image/x-icon">
+    <!-- Static CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+    <!-- Start Wrapper -->
+    <div class="wrapper">
+        <style>
+            body {
+                background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.3)), url('/static/images/office.jpg');
+                background-position: center 0px;
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                background-size: cover;
+            }
+        </style>
+        <!-- Start Navbar -->
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <!-- FontAwesome + Title (Left Side) -->
+                <div class="col-sm">
+                    <a href="#" id="navbar-content" class="navbar-brand flex-grow-1">
+                        {% block navbar-content %}
+                        <i class="text-warning fas fa-chart-pie">&nbsp;&nbsp; HR Mastery</i>
+                        {% endblock navbar-content %}  
+                    </a>
+                </div>
+                <!-- Link to Navigate -->
+                {% block link %}{% endblock link %} 
+            </nav>
+        </header>
+        <!-- End Navbar -->
+
+        <!-- Page Content -->
+        {% block content %}{% endblock content %}
+    </div>
+    <!-- End Wrapper -->
+
+    <!-- Start Footer -->
+    <footer id="footer" class="bg-dark text-center text-lg-start" style="color: #fff;">
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        &copy; {% now 'Y' %} Copyright:
+        <a href="#" class="text-center" style="text-decoration: none;">
+            <span class="text-warning">www.hr-mastery.com</span>
+        </a>
+    </div>
+    </footer>
+    <!-- End Footer -->
+
+    <!-- Bootstrap 5.3 JS CDN-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+
+    <!-- JQuery CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- Static JS -->
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+
+</html>

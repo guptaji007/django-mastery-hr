@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+<!-- Block Title -->
+{% block title %} Opportunities {% endblock title %}
+
+<!-- Navbar Content -->
+{% block navbar-content %}
+<i class="text-warning fas fa-code"></i>&nbsp;&nbsp; Job Opportunities
+{% endblock navbar-content %}
+
+<!-- Link to Navigate -->
+{% block link %}
+<a href="{% url 'home' %}" style="margin-right: 25px; font-size: 25px;" title="Go Back">
+    <i class="text-warning fas fa-angle-double-left"></i>
+</a>
+{% endblock link %}
+
+<!-- Page Content -->
+{% block content %}
+{% endblock content %}
