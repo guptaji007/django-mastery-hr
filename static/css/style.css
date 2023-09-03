@@ -22,3 +22,22 @@ html, body {
     color: #fff;
     margin-left: 25px;
 }
+
+/* Block typed effect and Button Job */
+.block-position {
+    width: 80%;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+/* Button Job Opportunities (home.html) */
+#btn-job {
+    width: 270px;
+    font-size: 22px;
+    border-radius: 30px;
+    margin-bottom: -50px;
+}

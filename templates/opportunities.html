@@ -17,4 +17,53 @@
 
 <!-- Page Content -->
 {% block content %}
+<!-- Container Start -->
+<div class="container mt-3" style="width: 80%;">
+    <div class="justify-content-center align-items-center row">
+        <h6 class="btn btn-warning" style="width: 100%; cursor: default;">
+            <strong>AVAILABLE JOB OPPORTUNITIES</strong>
+        </h6>
+        <div class="shadow-lg card p-3 mt-3" style="background-color: rgba(0, 0, 0, 0.5);">
+            <div class="row">
+                <!-- First Button -->
+                <div class="col-xl-3 col-sm-6 p-1">
+                    <div class="card" style="background-color: transparent;">
+                        <button class="btn btn-outline-warning btn-lg jobs">
+                            <i class="fab fa-react fa-5x"></i>
+                            <br><br>Front end
+                        </button>
+                    </div>
+                </div>
+                <!-- Second Button -->
+                <div class="col-xl-3 col-sm-6 p-1">
+                    <div class="card" style="background-color: transparent;">
+                        <button class="btn btn-outline-warning btn-lg jobs">
+                            <i class="fab fa-python fa-5x"></i>
+                            <br><br>Back end
+                        </button>
+                    </div>
+                </div>
+                <!-- Third Button -->
+                <div class="col-xl-3 col-sm-6 p-1">
+                    <div class="card" style="background-color: transparent;">
+                        <button class="btn btn-outline-warning btn-lg jobs">
+                            <i class="fab fa-node-js fa-5x"></i>
+                            <br><br>Fullstack
+                        </button>
+                    </div>
+                </div>
+                <!-- Fourth Button -->
+                <div class="col-xl-3 col-sm-6 p-1">
+                    <div class="card" style="background-color: transparent;">
+                        <button class="btn btn-outline-light btn-lg jobs" disabled>
+                            <i class="fas fa-file-code fa-5x"></i>
+                            <br><br>Intern (closed)
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Container End -->
 {% endblock content %}
