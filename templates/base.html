@@ -21,6 +21,7 @@
 <body>
     <!-- Start Wrapper -->
     <div class="wrapper">
+        <div id="preload"></div>
         <style>
             body {
                 background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.3)), url('/static/images/office.jpg');
@@ -75,6 +76,24 @@
 
     <!-- JQuery CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- Typed JS Effect CDN -->
+    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+
+    <!-- Typed effect control -->
+    <script>
+        var typed = new Typed('#element', {
+            strings: [
+                'are a job agency',
+                'offer you job',
+                'work with IT solutions',
+                'are the best agency',
+            ],
+            typeSpeed: 50,
+            backSpeed: 30,
+            loop: true,
+        });
+    </script>
 
     <!-- Static JS -->
     <script src="{% static 'js/script.js' %}"></script>

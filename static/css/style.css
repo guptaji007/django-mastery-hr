@@ -51,3 +51,25 @@ html, body {
 .btn-canel, .btn-send {
     width: 70px;
 }
+
+/* Spin Frontend Animation */
+#preload {
+    border: 6px solid #e5e5e5;
+    border-radius: 50%;
+    border-top-color: #ffc107;
+    position: absolute;
+    top: 50%;
+    left: calc(50% - 32px);
+    width: 55px;
+    height: 55px;
+    z-index: 1;
+    animation: preloader 1.2s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes preloader {
+    to {
+        transform: rotate(360deg);
+        opacity: 0;
+    }
+}
