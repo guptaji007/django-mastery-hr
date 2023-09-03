@@ -41,3 +41,13 @@ html, body {
     border-radius: 30px;
     margin-bottom: -50px;
 }
+
+/* Labels with icon (left side of Inputs) */
+.side-label {
+    width: 45px;
+}
+
+/* Buttons inside Modal Popup */
+.btn-canel, .btn-send {
+    width: 70px;
+}
