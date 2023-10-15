@@ -95,6 +95,21 @@
         });
     </script>
 
+    <!-- Input Mask JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.8/jquery.inputmask.min.js" integrity="sha512-efAcjYoYT0sXxQRtxGY37CKYmqsFVOIwMApaEbrxJr4RwqVVGw8o+Lfh/+59TU07+suZn1BWq4fDl5fdgyCNkw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- Sweet Alert JS -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <!-- Clear the modal form data when user click outside modal or close it -->
+    <script>
+        $("#frontendModal, #backendModal, #fullstackModal").on("hidden.bs.modal", function() {
+            $("#frontendModal form")[0].reset();
+            $("#backendModal form")[0].reset();
+            $("#fullstackModal form")[0].reset();
+        });
+    </script>
+
     <!-- Static JS -->
     <script src="{% static 'js/script.js' %}"></script>
 </body>
