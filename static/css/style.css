@@ -73,3 +73,47 @@ html, body {
         opacity: 0;
     }
 }
+
+/* Custom Sweet Alert Style */
+.swal-text {
+    /* All texts centered */
+    text-align: center;
+}
+
+/* Sweet Alert Icon Setting */
+.swal-icon--success::before,
+.swal-icon--success::after,
+.swal-icon--success__hide-corners {
+    background: none !important;
+}
+
+.swal-icon--success {
+    /* Color of ring */
+    border: orange;
+}
+
+.swal-icon--success__line {
+    /* Animation */
+    background-color: orange;
+}
+
+/* Sweet Alert Button Setting */
+.swal-button {
+    padding: 7px 19px;
+    border-radius: 5px;
+    background-color: #111;
+    font-size: 12px;
+    border: 1px solid #111;
+}
+
+.swal-button:focus {
+    /* Remove the silver border around the native button */
+    box-shadow: none;
+}
+
+.swal-button:not([disabled]):hover {
+    /* Hover Effect */
+    background: transparent;
+    color: #111;
+    border: 1px solid #111;
+}

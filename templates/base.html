@@ -69,6 +69,18 @@
     </footer>
     <!-- End Footer -->
 
+    <!-- Start Message from Backend system -->
+    {% for message in messages %}
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        {% if message.tags == "success" %}
+            <script>
+                var m = "{{ message }}";
+                swal("Perfect !", m, "success");
+            </script>
+        {% endif %}  
+    {% endfor %}
+    <!-- End Message from Backend system -->
+
     <!-- Bootstrap 5.3 JS CDN-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
@@ -98,7 +110,7 @@
     <!-- Input Mask JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.8/jquery.inputmask.min.js" integrity="sha512-efAcjYoYT0sXxQRtxGY37CKYmqsFVOIwMApaEbrxJr4RwqVVGw8o+Lfh/+59TU07+suZn1BWq4fDl5fdgyCNkw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-    <!-- Sweet Alert JS -->
+    <!-- Sweet Alert JS [Frontend Validation Message] -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <!-- Clear the modal form data when user click outside modal or close it -->
