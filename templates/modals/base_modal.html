@@ -1,6 +1,6 @@
 <!-- Base Modal -->
-<div class="modal fade" {% block modal-id %}{% endblock modal-id %} tabindex="-1" aria-labelledby="defaultModalLabel"
-  aria-hidden="true">
+<div class="modal fade close-modal" {% block modal-id %}{% endblock modal-id %} tabindex="-1"
+  aria-labelledby="defaultModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -9,8 +9,8 @@
         </h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <form method="POST" {% block action %} {% endblock action %} {% block validation %} {% endblock validation %} enctype="multipart/form-data"
-        autocomplete="off">
+      <form method="POST" {% block action %} {% endblock action %} {% block validation %} {% endblock validation %}
+        enctype="multipart/form-data" autocomplete="off">
         {% csrf_token %}
         <div class="modal-body">
           <!-- Name Input -->

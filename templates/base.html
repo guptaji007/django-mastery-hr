@@ -1,6 +1,7 @@
 {% load static %}
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,7 +10,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <!-- FontAwesome CDN -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Favicon -->
     <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
     <!-- Logo -->
@@ -24,7 +27,7 @@
         <div id="preload"></div>
         <style>
             body {
-                background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.3)), url('/static/images/office.jpg');
+                background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3)), url('/static/images/office.jpg');
                 background-position: center 0px;
                 background-repeat: no-repeat;
                 background-attachment: fixed;
@@ -39,11 +42,11 @@
                     <a href="#" id="navbar-content" class="navbar-brand flex-grow-1">
                         {% block navbar-content %}
                         <i class="text-warning fas fa-chart-pie">&nbsp;&nbsp; HR Mastery</i>
-                        {% endblock navbar-content %}  
+                        {% endblock navbar-content %}
                     </a>
                 </div>
                 <!-- Link to Navigate -->
-                {% block link %}{% endblock link %} 
+                {% block link %}{% endblock link %}
             </nav>
         </header>
         <!-- End Navbar -->
@@ -60,29 +63,29 @@
 
     <!-- Start Footer -->
     <footer id="footer" class="bg-dark text-center text-lg-start" style="color: #fff;">
-    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-        &copy; {% now 'Y' %} Copyright:
-        <a href="#" class="text-center" style="text-decoration: none;">
-            <span class="text-warning">www.hr-mastery.com</span>
-        </a>
-    </div>
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            &copy; {% now 'Y' %} Copyright:
+            <a href="#" class="text-center" style="text-decoration: none;">
+                <span class="text-warning">www.hr-mastery.com</span>
+            </a>
+        </div>
     </footer>
     <!-- End Footer -->
 
     <!-- Start Message from Backend system -->
     {% for message in messages %}
-        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-        {% if message.tags == "success" %}
-            <script>
-                var m = "{{ message }}";
-                swal("Perfect !", m, "success");
-            </script>
-        {% elif message.tags == "error" %}
-            <script>
-                var m = "{{ message }}";
-                swal("Attention !", m, "info");
-            </script>
-        {% endif %}
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    {% if message.tags == "success" %}
+    <script>
+        var m = "{{ message }}";
+        swal("Perfect !", m, "success");
+    </script>
+    {% elif message.tags == "error" %}
+    <script>
+        var m = "{{ message }}";
+        swal("Attention !", m, "info");
+    </script>
+    {% endif %}
     {% endfor %}
     <!-- End Message from Backend system -->
 
@@ -92,7 +95,9 @@
         crossorigin="anonymous"></script>
 
     <!-- JQuery CDN -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <!-- Typed JS Effect CDN -->
     <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
@@ -113,17 +118,87 @@
     </script>
 
     <!-- Input Mask JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.8/jquery.inputmask.min.js" integrity="sha512-efAcjYoYT0sXxQRtxGY37CKYmqsFVOIwMApaEbrxJr4RwqVVGw8o+Lfh/+59TU07+suZn1BWq4fDl5fdgyCNkw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.8/jquery.inputmask.min.js"
+        integrity="sha512-efAcjYoYT0sXxQRtxGY37CKYmqsFVOIwMApaEbrxJr4RwqVVGw8o+Lfh/+59TU07+suZn1BWq4fDl5fdgyCNkw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <!-- Sweet Alert JS [Frontend Validation Message] -->
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <!-- Clear the modal form data when user click outside modal or close it -->
     <script>
-        $("#frontendModal, #backendModal, #fullstackModal").on("hidden.bs.modal", function() {
+        $("#frontendModal, #backendModal, #fullstackModal").on("hidden.bs.modal", function () {
             $("#frontendModal form")[0].reset();
             $("#backendModal form")[0].reset();
             $("#fullstackModal form")[0].reset();
+        });
+    </script>
+
+    <!-- Ajax Spinner -->
+    <script>
+        JQuery(function ($) {
+            $(document).ajaxSend(function () {
+                $("#bg-spinner").fadeIn(500);
+            });
+
+            $(".btn-send").click(function () {
+                $.ajax({
+                    type: 'GET',
+                    success: function (data) {
+                        var d = $.parseJSON(data);
+                        alert(d.Test);
+                    }
+                }).done(function () {
+                    setTimeout(function () {
+                        $("#bg-spinner").fadeOut(500);
+                    }, 700);
+                });
+            });
+        });
+
+        // Close Modal After Send Button is Clicked
+        $(".btn-send").click(function () {
+            var name = $("#name").val();
+            var age = $("#age").val();
+            var email = $("#email").val();
+            var phone = $("#phone").val();
+            var address = $("#address").val();
+            var experience = $("#experience").val();
+            var skills = $("#skills").val();
+            var file = $("#file").val();
+
+            var name2 = $("#name2").val();
+            var age2 = $("#age2").val();
+            var email2 = $("#email2").val();
+            var phone2 = $("#phone2").val();
+            var address2 = $("#address2").val();
+            var experience2 = $("#experience2").val();
+            var skills2 = $("#skills2").val();
+            var file2 = $("#file2").val();
+
+            var name3 = $("#name3").val();
+            var age3 = $("#age3").val();
+            var email3 = $("#email3").val();
+            var phone3 = $("#phone3").val();
+            var address3 = $("#address3").val();
+            var experience3 = $("#experience3").val();
+            var skills3 = $("#skills3").val();
+            var file3 = $("#file3").val();
+
+            if ((name != "") && (age != "") && (email != "") && (phone != "") &&
+                (address != "") && (experience != "") && (skills != "") && (file != "")) {
+                $(".close-modal").modal("hide");
+            }
+
+            if ((name2 != "") && (age2 != "") && (email2 != "") && (phone2 != "") &&
+                (address2 != "") && (experience2 != "") && (skills2 != "") && (file2 != "")) {
+                $(".close-modal").modal("hide");
+            }
+
+            if ((name3 != "") && (age3 != "") && (email3 != "") && (phone3 != "") &&
+                (address3 != "") && (experience3 != "") && (skills3 != "") && (file3 != "")) {
+                $(".close-modal").modal("hide");
+            }
         });
     </script>
 

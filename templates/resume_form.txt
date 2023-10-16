@@ -14,16 +14,16 @@
                 <strong>PERSONAL DATA</strong>
             </p>
             <p style="font-size: 15px; text-align: left; margin-left: 40px;">
-                <strong>AGE:</strong> {{ age }}
+                <strong>AGE: </strong> {{ age }}
             </p>
             <p style="font-size: 15px; text-align: left; margin-left: 40px;">
-                <strong>PHONE:</strong> {{ phone }}
+                <strong>PHONE: </strong> {{ phone }}
             </p>
             <p style="font-size: 15px; text-align: left; margin-left: 40px;">
-                <strong>EMAIL:</strong> {{ email }}
+                <strong>EMAIL: </strong> {{ email }}
             </p>
             <p style="font-size: 15px; text-align: left; margin-left: 40px;">
-                <strong>ADDRESS:</strong> {{ address }}
+                <strong>ADDRESS: </strong> {{ address }}
             </p>
             
             <div style="text-align: left; margin-left: 40px; margin-right: 35px;">

@@ -1,5 +1,6 @@
 /* Start Configuration */
-html, body {
+html,
+body {
     height: 100%;
     margin: 0;
     max-width: 100%;
@@ -12,7 +13,8 @@ html, body {
     margin-bottom: -50px;
 }
 
-#footer, .push {
+#footer,
+.push {
     height: 50px;
 }
 
@@ -47,8 +49,14 @@ html, body {
     width: 45px;
 }
 
+#back {
+    margin-right: 25px;
+    font-size: 25px;
+}
+
 /* Buttons inside Modal Popup */
-.btn-canel, .btn-send {
+.btn-canel,
+.btn-send {
     width: 70px;
 }
 
@@ -116,4 +124,83 @@ html, body {
     background: transparent;
     color: #111;
     border: 1px solid #111;
+}
+
+/* Backend Spinner Ajax */
+#bg-spinner {
+    top: 0;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    display: none;
+    background: rgba(1, 1, 1, 0.7);
+}
+
+#position-spinner {
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+#spinner {
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    border: 6px solid #d3d3d3;
+    border-top: 6px solid #ffc107;
+    animation: loading 1s infinite linear;
+}
+
+@keyframes loading {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Responsive Modes */
+
+/* Tablet Resolution */
+@media(max-width: 1024px) {
+    #footer {
+        font-size: 15px;
+    }
+}
+
+/* Smartphone Resolution */
+@media(max-width: 575px) {
+    #footer {
+        font-size: 12px;
+    }
+
+    body {
+        overflow-y: visible;
+    }
+
+    #navbar-content {
+        font-size: 16px;
+        margin-left: 20px;
+    }
+
+    .typed-text {
+        font-size: 24px;
+    }
+
+    #btn-job {
+        font-size: 15px;
+        width: 200px;
+    }
+
+    .jobs {
+        font-size: 13px;
+    }
+
+    #card-title {
+        font-size: 13px;
+    }
+
+    #back {
+        font-size: 20px;
+        margin-right: 20px;
+    }
 }

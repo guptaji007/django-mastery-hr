@@ -10,7 +10,7 @@
 
 <!-- Link to Navigate -->
 {% block link %}
-<a href="{% url 'home' %}" style="margin-right: 25px; font-size: 25px;" title="Go Back">
+<a href="{% url 'home' %}" id="back" title="Go Back">
     <i class="text-warning fas fa-angle-double-left"></i>
 </a>
 {% endblock link %}
@@ -20,7 +20,7 @@
 <!-- Container Start -->
 <div class="container mt-3" style="width: 80%;">
     <div class="justify-content-center align-items-center row">
-        <h6 class="btn btn-warning" style="width: 100%; cursor: default;">
+        <h6 class="btn btn-warning" id="card-title" style="width: 100%; cursor: default;">
             <strong>AVAILABLE JOB OPPORTUNITIES</strong>
         </h6>
         <div class="shadow-lg card p-3 mt-3" style="background-color: rgba(0, 0, 0, 0.5);">
@@ -66,4 +66,13 @@
     </div>
 </div>
 <!-- Container End -->
+
+<!-- Spinner Ajax (Backend) -->
+<div id="bg-spinner">
+    <div id="position-spinner">
+        <span id="spinner"></span>
+    </div>
+</div>
+
+<br><br><br><br>
 {% endblock content %}
