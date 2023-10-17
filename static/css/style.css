@@ -56,8 +56,16 @@ body {
 
 /* Buttons inside Modal Popup */
 .btn-canel,
-.btn-send {
+.btn-send, .btn-modal {
     width: 70px;
+}
+
+.watermark {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
 }
 
 /* Spin Frontend Animation */
@@ -203,4 +211,23 @@ body {
         font-size: 20px;
         margin-right: 20px;
     }
+
+    #card-login {
+        width: 95%;
+    }
+}
+
+/* Login Page CSS */
+#card-login {
+    width: 500px;
+}
+
+.login-border {
+    border-top: .4rem solid #ffc107;
+    border-radius: 10px;
+}
+
+#btn-enter {
+    border-radius: 15px;
+    font-size: 16px;
 }

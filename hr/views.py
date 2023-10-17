@@ -4,8 +4,15 @@ from django.contrib import messages  # send alert message to frontend
 from django.core.mail import EmailMultiAlternatives  # required to send mails
 from django.template import loader  # render templates on email body
 from .models import Registered_email
+from django.contrib.auth.decorators import (
+    login_required,
+)  # Login required to access private pages
+from django.views.decorators.cache import (
+    cache_control,
+)  # Destory the session after the logout
 
 
+# ================= FRONTEND SECTION ====================
 # Home Page View
 def home(request):
     return render(request, "home.html")
@@ -150,3 +157,10 @@ def email_fullstack(request):
         email.send()
         messages.success(request, "Fullstack Resume Sent Successfully !")
         return HttpResponseRedirect("/")
+
+
+# ================= BACKEND SECTION ====================
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
+@login_required(login_url="login")
+def backend(request):
+    return render(request, "backend.html")

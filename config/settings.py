@@ -136,3 +136,7 @@ EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 # EMAIL_HOST_USER = "demo@gmail.com"
 # EMAIL_HOST_PASSWORD = "test@123"
 # EMAIL_USE_TLS = True
+
+# LOGIN / LOGOUT
+LOGIN_REDIRECT_URL = "backend"
+LOGOUT_REDIRECT_URL = "home"
