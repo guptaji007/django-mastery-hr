@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect  # redirect the page after submit
 from django.contrib import messages  # send alert message to frontend
 from django.core.mail import EmailMultiAlternatives  # required to send mails
 from django.template import loader  # render templates on email body
-from .models import Registered_email
+from .models import Registered_email, Support
 from django.contrib.auth.decorators import (
     login_required,
 )  # Login required to access private pages
@@ -23,6 +23,37 @@ def opportunities(request):
     return render(request, "opportunities.html")
 
 
+# Support View
+def support(request):
+    if request.method == "POST":
+        # Check if email exists in DB
+        email = request.POST["email"]
+        if Support.objects.filter(email=email).exists():
+            messages.info(
+                request, "."
+            )  # args of message cannot be empty. We use same msg for many
+            return HttpResponseRedirect("/support")
+        else:
+            support = Support()
+            message = request.POST.get("message")
+            terms = request.POST.get("terms")
+            person = request.POST.get("person")
+            option = request.POST.get("option")
+            email = request.POST.get("email")
+
+            support.message = message
+            support.terms = terms
+            support.person = person
+            support.option = option
+            support.email = email
+
+            support.save()
+            messages.success(request, "We will review your request !")
+            return HttpResponseRedirect("/")
+    else:
+        return render(request, "support.html")
+
+
 # ================= RESUMES ====================
 # Frontend From View
 def email_frontend(request):
@@ -30,7 +61,7 @@ def email_frontend(request):
         # Check if email already exist in DB
         email = request.POST["email"]
         if Registered_email.objects.filter(email=email).exists():
-            message.error(request, "We already have your resume in our DB.")
+            messages.error(request, "We already have your resume in our DB.")
             return HttpResponseRedirect("/opportunities")
         else:
             name = request.POST.get("name")
@@ -77,7 +108,7 @@ def email_backend(request):
         # Check if email already exist in DB
         email = request.POST["email"]
         if Registered_email.objects.filter(email=email).exists():
-            message.error(request, "We already have your resume in our DB.")
+            messages.error(request, "We already have your resume in our DB.")
             return HttpResponseRedirect("/opportunities")
         else:
             name = request.POST.get("name")
@@ -121,7 +152,7 @@ def email_fullstack(request):
         # Check if email already exist in DB
         email = request.POST["email"]
         if Registered_email.objects.filter(email=email).exists():
-            message.error(request, "We already have your resume in our DB.")
+            messages.error(request, "We already have your resume in our DB.")
             return HttpResponseRedirect("/opportunities")
     else:
         name = request.POST.get("name")

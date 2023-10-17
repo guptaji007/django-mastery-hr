@@ -1,0 +1,25 @@
+{% extends 'modals/others/base.html' %}
+
+<!-- Modal ID -->
+{% block modal-id %} id="msgSupportModal" {% endblock modal-id %}
+
+<!-- Center Modal -->
+{% block modal-center %} modal-dialog-centered {% endblock modal-center %}
+
+<!-- Modal Title -->
+{% block modal-title %}
+<i class="text-danger far fa-times-circle"></i>&nbsp; Sorry !
+{% endblock modal-title %}
+
+<!-- Modal Body -->
+{% block modal-body %}
+<div class="text-center text-primary">
+    <div class="text-danger far fa-times-circle fa-5x"></div>
+</div>
+<div class="text-danger mb-3 mt-3" style="font-size: 18px;">
+    You have a pending request.
+</div>
+<div class="mb-3" style="font-size: 13px;">
+    Note: To make a new request, you must first wait until the end of your pending request.
+</div>
+{% endblock modal-body %}

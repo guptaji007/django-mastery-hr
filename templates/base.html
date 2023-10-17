@@ -97,7 +97,7 @@
                     <a href="{% url 'backend' %}" class="btn btn-warning">Login</a>
                     <a href="#" class="btn btn-secondary">FAQ</a>
                     <hr>
-                    <a href="#" class="btn btn-outline-dark">
+                    <a class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#popSupportModal">
                         <i class="fas fa-headset"></i>&nbsp;&nbsp; Support
                     </a>
                     {% endblock sidebar-links %}
@@ -116,6 +116,9 @@
         {% include 'modals/forms/formFullstack.html' %}
         <!-- Others -->
         {% include 'modals/others/logout.html' %}
+        {% include 'modals/others/msgForm.html' %}
+        {% include 'modals/others/msgSupport.html' %}
+        {% include 'modals/others/popSupport.html' %}
     </div>
     <!-- End Wrapper -->
 
@@ -130,18 +133,13 @@
     </footer>
     <!-- End Footer -->
 
-    <!-- Start Message from Backend system -->
+    <!-- Success Message from Backend system -->
     {% for message in messages %}
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     {% if message.tags == "success" %}
     <script>
         var m = "{{ message }}";
         swal("Perfect !", m, "success");
-    </script>
-    {% elif message.tags == "error" %}
-    <script>
-        var m = "{{ message }}";
-        swal("Attention !", m, "info");
     </script>
     {% endif %}
     {% endfor %}
@@ -154,7 +152,30 @@
             swal("Denied !", "Enter your data correctly.", "error");
         </script>
     {% endif %}
-        
+
+    <!-- Support Message (Pending request - Duplicated Calls) -->
+    {% for message in messages %}
+    {% if message.tags == "info" %}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#msgSupportModal").modal('show');
+        })
+    </script>
+    {% endif %}
+    {% endfor %}
+
+    <!-- Candidate Message (Duplicated Resume) -->
+    {% for message in messages %}
+    {% if message.tags == "error" %}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#msgFormModal").modal('show');
+        })
+    </script>
+    {% endif %}
+    {% endfor %}
 
     <!-- Bootstrap 5.3 JS CDN-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
@@ -281,6 +302,31 @@
                 p.type = "password";
             }
         }
+    </script>
+
+    <!-- Enable / Disable option based on person type -->
+    <script>
+        $(document).ready(function () {
+            $('select[name="person"]').on('change', function() {
+                var $this = $(this);
+                // If employ: disable only 'Update resume'
+                $('select[name="option"]').find('option[value="Update resume"]').prop('disabled', ($this.val() == 'Employee'));
+                // If candidate: disable the options below
+                $('select[name="option"]').find('option[value="I lost my account"]').prop('disabled', ($this.val() == 'Candidate'));
+                $('select[name="option"]').find('option[value="My password does not work"]').prop('disabled', ($this.val() == 'Candidate'));
+            });
+            $('select[name="person"]').trigger('change');
+        });
+    </script>
+
+    <!-- Close the sidebar menu when the button is clicked -->
+    <script>
+        $(document).ready(function() {
+            jQuery("#offcanvasRight, .offcanvas-body a").click(function() {
+                console.log($(this).attr('href'));
+                jQuery('.offcanvas').offcanvas('hide');
+            });
+        });
     </script>
 
     <!-- Static JS -->

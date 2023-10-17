@@ -1,0 +1,29 @@
+{% extends 'modals/others/base.html' %}
+
+<!-- Modal ID -->
+{% block modal-id %} id="popSupportModal" {% endblock modal-id %}
+
+<!-- Modal Title -->
+{% block modal-title %}
+<i class="fas fa-headset"></i>&nbsp; Support 
+{% endblock modal-title %}
+
+<!-- Modal Body -->
+{% block modal-body %}
+<div class="text-center text-warning">
+    <span class="fa-stack fa-3x">
+        <i class="fas fa-cloud fa-stack-2x"></i>
+        <i class="text-dark fas fa-user-cog fa-stack-1x fa-inverse"></i>
+    </span>
+</div>
+<div class="text-center mt-3 mb-4">
+    24 hours a day and 7 days a week.
+</div>
+{% endblock modal-body %}
+
+<!-- Modal Action -->
+{% block btn-action %}
+<a href="{% url 'support' %}" class="btn btn-outline-dark btn-sm btn-modal">
+    Go
+</a>
+{% endblock btn-action %}
