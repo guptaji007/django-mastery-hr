@@ -71,3 +71,15 @@ class Notepad(models.Model):
 
     def __str__(self):
         return self.title
+
+
+# Job Vacancies
+class Vacancies(models.Model):
+    id = models.IntegerField(primary_key=True)
+    frontend = models.CharField(max_length=100)
+    backend = models.CharField(max_length=100)
+    fullstack = models.CharField(max_length=100)
+    intern = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.frontend

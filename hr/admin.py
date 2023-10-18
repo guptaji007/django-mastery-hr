@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Registered_email, Support, Message, Notepad
+from .models import Registered_email, Support, Message, Notepad, Vacancies
 from django.utils.html import format_html
 
 
@@ -79,3 +79,10 @@ class NotepadAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Notepad, NotepadAdmin)
+
+
+class VacanciesAdmin(admin.ModelAdmin):
+    list_display = ["frontend", "backend", "fullstack", "intern"]
+
+
+admin.site.register(Vacancies, VacanciesAdmin)

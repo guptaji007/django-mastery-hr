@@ -33,4 +33,6 @@ urlpatterns = [
     path("backend/", views.backend, name="backend"),
     # Path to Notepad
     path("edit_notepad/", views.edit_notepad, name="edit_notepad"),
+    # Path to Job Vacancies
+    path("edit_vacancies/", views.edit_vacancies, name="edit_vacancies"),
 ]

@@ -8,16 +8,16 @@
 
 <!-- Sidebar Links -->
 {% block sidebar-links %}
-<a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#LogoutModal">Logout</a>
-{% if request.user.is_superuser %}
-    <a href="{% url 'admin:index' %}" class="btn btn-secondary" target="_blank">Admin</a>
-{% else %}
-    <a href="{% url 'support' %}" class="btn btn-outline-secondary">Support</a>
-{% endif %}
-<hr><br>
-<center class="mt-3">
-    <i class="fas fa-chart-pie fa-7x" style="color: #e9e9e9;"></i>
-</center>
+    <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#LogoutModal">Logout</a>
+    {% if request.user.is_superuser %}
+        <a href="{% url 'admin:index' %}" class="btn btn-secondary" target="_blank">Admin</a>
+    {% else %}
+        <a href="{% url 'support' %}" class="btn btn-outline-secondary">Support</a>
+    {% endif %}
+    <hr><br>
+    <center class="mt-3">
+        <i class="fas fa-chart-pie fa-7x" style="color: #e9e9e9;"></i>
+    </center>
 {% endblock sidebar-links %}
 
 <!-- Page Content -->
@@ -35,23 +35,27 @@
                 <!-- Card 1 -->
                 <div class="col-xl-3 col-sm-6 col-6 p-1">
                     <div class="card" style="background-color: transparent;">
-                        <button class="btn btn-success btn-lg jobs" data-bs-toggle="modal" data-bs-target="#candidateModal">
+                        <button class="btn btn-success btn-lg jobs" data-bs-toggle="modal"
+                            data-bs-target="#candidateModal">
                             <i class="fas fa-user-alt fa-3x"></i>
-                            <br><br>Canidates
+                            <br><br>Candidates
                         </button>
                     </div>
                 </div>
                 <!-- Card 2 -->
                 <div class="col-xl-3 col-sm-6 col-6 p-1">
                     <div class="card" style="background-color: transparent;">
-                        <button class="btn btn-warning btn-lg jobs">
-                            <i class="fas fa-users fa-3x"></i>
-                            <br><br>Opportunities
+                        {% for vacancy in vacancies %}
+                        <button class="btn btn-warning btn-lg jobs" data-bs-toggle="modal" data-bs-target="#vacanciesModal{{ vacancy.pk }}">
+                                <i class="fas fa-users fa-3x"></i>
+                                <br><br>Opportunities
                         </button>
+                        {% include 'modals/backend/vacancies.html' %} 
+                        {% endfor %}
                     </div>
                 </div>
                 <!-- Card 3 -->
-                <div class="col-xl-3 col-sm-6 col-6 p-1">
+                <div class=" col-xl-3 col-sm-6 col-6 p-1">
                     <div class="card" style="background-color: transparent;">
                         <button class="btn btn-danger btn-lg jobs">
                             <i class="fas fa-clock fa-3x"></i>
@@ -63,17 +67,17 @@
                 <div class="col-xl-3 col-sm-6 col-6 p-1">
                     <div class="card" style="background-color: transparent;">
                         {% for notepad in notepads %}
-                            <button class="btn btn-primary btn-lg jobs" data-bs-toggle="modal" data-bs-target="#notepadModal{{ notepad.pk }}">
+                        <button class="btn btn-primary btn-lg jobs" data-bs-toggle="modal" data-bs-target="#notepadModal{{ notepad.pk }}">
                                 <i class="fas fa-file-alt fa-3x"></i>
                                 <br><br>Notepad
-                            </button>
-                            {% include "modals/backend/notepad.html" %}
+                        </button>
+                        {% include "modals/backend/notepad.html" %}
                         {% endfor %}
+                        </div>
                     </div>
                 </div>
-            </div> 
+            </div>
         </div>
-    </div>
     <br><br><br>
     <center>
         <button class="btn mt-5 watermark" disabled style="color: #e9e9e9; border: none;">

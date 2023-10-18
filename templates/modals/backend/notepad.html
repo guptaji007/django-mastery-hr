@@ -10,7 +10,7 @@
 
 <!-- Modal Form Body -->
 {% block form %}
-<form method="POST" action="{% url "edit_notepad" %}" autocomplete="off">
+<form method="POST" action="{% url 'edit_notepad' %}" autocomplete="off">
     {% csrf_token %}
     <div class="modal-body">
         <span class="card p-2 bg-primary text-center text-light mb-3" style="width: 100%; font-size: 14px;">
@@ -20,7 +20,8 @@
         <input type="hidden" name="id" value={{ notepad.id }} readonly>
         <!-- Input Title -->
         <div class="input-group mb-3">
-            <input type="text" class="form-control" name="title" value="{{ notepad.title }}" placeholder="Your Title Here..">
+            <input type="text" class="form-control" name="title" value="{{ notepad.title }}"
+                placeholder="Your Title Here..">
         </div>
         <!-- Textarea -->
         <div class="form-group">
@@ -31,10 +32,10 @@
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary btn-sm btn-modal" data-bs-dismiss="modal">
-          Close
+            Close
         </button>
         <button type="submit" class="btn btn-outline-primary btn-sm btn-modal" data-bs-dismiss="modal">
-          Save
+            Save
         </button>
     </div>
 </form>

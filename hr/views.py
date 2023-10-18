@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect  # redirect the page after submit
 from django.contrib import messages  # send alert message to frontend
 from django.core.mail import EmailMultiAlternatives  # required to send mails
 from django.template import loader  # render templates on email body
-from .models import Registered_email, Support, Message, Notepad
+from .models import Registered_email, Support, Message, Notepad, Vacancies
 from django.contrib.auth.decorators import (
     login_required,
 )  # Login required to access private pages
@@ -20,7 +20,8 @@ def home(request):
 
 # Opportunities View
 def opportunities(request):
-    return render(request, "opportunities.html")
+    myJob = Vacancies.objects.all()
+    return render(request, "opportunities.html", {"vacancies": myJob})
 
 
 # Support View
@@ -262,7 +263,12 @@ def email_intern(request):
 def backend(request):
     total = Registered_email.objects.all().count()
     myNote = Notepad.objects.all()
-    return render(request, "backend.html", {"count": total, "notepads": myNote})
+    myJob = Vacancies.objects.all()
+    return render(
+        request,
+        "backend.html",
+        {"count": total, "notepads": myNote, "vacancies": myJob},
+    )
 
 
 # Notepad View
@@ -276,4 +282,20 @@ def edit_notepad(request):
             notepad.text = request.POST.get("text")
             notepad.save()
             messages.success(request, "Notepad Updated Successfully !")
+            return HttpResponseRedirect("/backend")
+
+
+# Job Vacancies View
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
+@login_required(login_url="login")
+def edit_vacancies(request):
+    if request.method == "POST":
+        vacancy = Vacancies.objects.get(id=request.POST.get("id"))
+        if vacancy != None:
+            vacancy.frontend = request.POST.get("frontend")
+            vacancy.backend = request.POST.get("backend")
+            vacancy.fullstack = request.POST.get("fullstack")
+            vacancy.intern = request.POST.get("intern")
+            vacancy.save()
+            messages.success(request, "Job Vacancies Updated!")
             return HttpResponseRedirect("/backend")
