@@ -62,10 +62,13 @@
                 <!-- Card 4 -->
                 <div class="col-xl-3 col-sm-6 col-6 p-1">
                     <div class="card" style="background-color: transparent;">
-                        <button class="btn btn-primary btn-lg jobs">
-                            <i class="fas fa-file-alt fa-3x"></i>
-                            <br><br>Notepad
-                        </button>
+                        {% for notepad in notepads %}
+                            <button class="btn btn-primary btn-lg jobs" data-bs-toggle="modal" data-bs-target="#notepadModal{{ notepad.pk }}">
+                                <i class="fas fa-file-alt fa-3x"></i>
+                                <br><br>Notepad
+                            </button>
+                            {% include "modals/backend/notepad.html" %}
+                        {% endfor %}
                     </div>
                 </div>
             </div> 

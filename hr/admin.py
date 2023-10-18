@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Registered_email, Support, Message
+from .models import Registered_email, Support, Message, Notepad
 from django.utils.html import format_html
 
 
@@ -72,3 +72,10 @@ class MessageAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Message, MessageAdmin)
+
+
+class NotepadAdmin(admin.ModelAdmin):
+    list_display = ["title"]
+
+
+admin.site.register(Notepad, NotepadAdmin)

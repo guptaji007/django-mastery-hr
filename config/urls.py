@@ -29,5 +29,8 @@ urlpatterns = [
     # Path to send intern form
     path("email_intern/", views.email_intern, name="email_intern"),
     # ================= BACKEND SECTION ====================
+    # Path to Backend Home Page
     path("backend/", views.backend, name="backend"),
+    # Path to Notepad
+    path("edit_notepad/", views.edit_notepad, name="edit_notepad"),
 ]

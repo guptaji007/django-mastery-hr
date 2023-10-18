@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect  # redirect the page after submit
 from django.contrib import messages  # send alert message to frontend
 from django.core.mail import EmailMultiAlternatives  # required to send mails
 from django.template import loader  # render templates on email body
-from .models import Registered_email, Support, Message
+from .models import Registered_email, Support, Message, Notepad
 from django.contrib.auth.decorators import (
     login_required,
 )  # Login required to access private pages
@@ -49,7 +49,10 @@ def support(request):
 
             support.save()
             messages.success(request, "We will review your request !")
-            return HttpResponseRedirect("/")
+            if not request.user.is_authenticated:
+                return HttpResponseRedirect("/")
+            else:
+                return HttpResponseRedirect("/backend")
     else:
         return render(request, "support.html")
 
@@ -253,8 +256,24 @@ def email_intern(request):
 
 
 # ================= BACKEND SECTION ====================
+# Backend Home Page
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 @login_required(login_url="login")
 def backend(request):
     total = Registered_email.objects.all().count()
-    return render(request, "backend.html", {"count": total})
+    myNote = Notepad.objects.all()
+    return render(request, "backend.html", {"count": total, "notepads": myNote})
+
+
+# Notepad View
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
+@login_required(login_url="login")
+def edit_notepad(request):
+    if request.method == "POST":
+        notepad = Notepad.objects.get(id=request.POST.get("id"))
+        if notepad != None:
+            notepad.title = request.POST.get("title")
+            notepad.text = request.POST.get("text")
+            notepad.save()
+            messages.success(request, "Notepad Updated Successfully !")
+            return HttpResponseRedirect("/backend")

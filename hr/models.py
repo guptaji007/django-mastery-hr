@@ -45,6 +45,7 @@ class Support(models.Model):
     def __str__(self):
         return self.person
 
+
 # Message
 class Message(models.Model):
     SITUATION = {
@@ -60,3 +61,13 @@ class Message(models.Model):
 
     def __str__(self):
         return self.text
+
+
+# Notepad
+class Notepad(models.Model):
+    id = models.IntegerField(primary_key=True)
+    title = models.CharField(max_length=60)
+    text = models.TextField()
+
+    def __str__(self):
+        return self.title

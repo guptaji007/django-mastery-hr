@@ -1,0 +1,41 @@
+{% extends 'modals/backend/base.html' %}
+
+<!-- Modal ID -->
+{% block modal-id %} id="notepadModal{{ notepad.pk }}" {% endblock modal-id %}
+
+<!-- Modal Title -->
+{% block modal-title %}
+<i class="text-primary fas fa-file-alt"></i>&nbsp; Notepad App
+{% endblock modal-title %}
+
+<!-- Modal Form Body -->
+{% block form %}
+<form method="POST" action="{% url "edit_notepad" %}" autocomplete="off">
+    {% csrf_token %}
+    <div class="modal-body">
+        <span class="card p-2 bg-primary text-center text-light mb-3" style="width: 100%; font-size: 14px;">
+            {% now "d/m/Y (H:i)" %}
+        </span>
+        <!-- Hidden ID -->
+        <input type="hidden" name="id" value={{ notepad.id }} readonly>
+        <!-- Input Title -->
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" name="title" value="{{ notepad.title }}" placeholder="Your Title Here..">
+        </div>
+        <!-- Textarea -->
+        <div class="form-group">
+            <textarea name="text" rows="5" class="form-control" maxlength="1000" placeholder="Your Text Here..">
+                {{ notepad.text }}
+            </textarea>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary btn-sm btn-modal" data-bs-dismiss="modal">
+          Close
+        </button>
+        <button type="submit" class="btn btn-outline-primary btn-sm btn-modal" data-bs-dismiss="modal">
+          Save
+        </button>
+    </div>
+</form>
+{% endblock form %}
