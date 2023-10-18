@@ -1,0 +1,51 @@
+{% extends 'modals/others/base.html' %}
+
+<!-- Modal ID -->
+{% block modal-id %} id="infoJobsModal" {% endblock modal-id %}
+
+<!-- Modal Title -->
+{% block modal-title %}
+<i class="fas fa-code"></i>&nbsp; About opportunities
+{% endblock modal-title %}
+
+<!-- Modal Body -->
+{% block modal-body %}
+<h6 class="card p-2 border-dark">Number of available job openings</h6>
+<div class="justify-content-between mt-3 mb-3">
+    <div class="row">
+        <div class="col-xl-3 col-sm-6 col-6">
+            <button class="btn btn-secondary btn-lg mb-3" style="width: 100%;">
+                <i class="fab fa-react fa-3x"></i>
+                <br><span style="font-size: 14px;">Frontend</span>
+            </button>
+            <span>10</span>
+        </div>
+        <div class="col-xl-3 col-sm-6 col-6">
+            <button class="btn btn-secondary btn-lg mb-3" style="width: 100%;">
+                <i class="fab fa-python fa-3x"></i>
+                <br><span style="font-size: 14px;">Backend</span>
+            </button>
+            <span>10</span>
+        </div>
+        <div class="col-xl-3 col-sm-6 col-6">
+            <button class="btn btn-secondary btn-lg mb-3" style="width: 100%;">
+                <i class="fab fa-node-js fa-3x"></i>
+                <br><span style="font-size: 14px;">Fullstack</span>
+            </button>
+            <span>10</span>
+        </div>
+        <div class="col-xl-3 col-sm-6 col-6">
+            <button class="btn btn-secondary btn-lg mb-3" style="width: 100%;">
+                <i class="fas fa-file-code fa-3x"></i>
+                <br><span style="font-size: 14px;">Intern</span>
+            </button>
+            <span>10</span>
+        </div>
+    </div>
+</div>
+<hr>
+<div class="mt-4 mb-xxl-3 ">
+    <h6 class="card p-2 text-light bg-danger mb-4">Job Vacancies will be close in: </h6>
+    <span class="text-center" style="font-size: 20px;">18/10/2023 04:30:00</span>
+</div>
+{% endblock modal-body %}

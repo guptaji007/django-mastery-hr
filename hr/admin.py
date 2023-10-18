@@ -14,7 +14,7 @@ admin.site.register(Registered_email, Registered_emailAdmin)
 
 
 class SupportAdmin(admin.ModelAdmin):
-    list_filter = ["situation"]
+    list_filter = ["situation", "person"]
     list_display = ["person", "email", "option", "created_at", "status", "_"]
     search_fields = ["person", "option"]
     list_per_page = 10

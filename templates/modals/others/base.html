@@ -1,7 +1,7 @@
 <!-- Modal -->
 <div class="modal fade" {% block modal-id %} {% endblock modal-id %}
      tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog {% block modal-center %} {% endblock modal-center %}">
+    <div class="modal-dialog {% block modal-center %} {% endblock modal-center %}" {% block css-id %} {% endblock css-id %}>
       <div class="modal-content">
         <div class="modal-header">
           <h1 class="modal-title fs-5" id="exampleModalLabel">{% block modal-title %} {% endblock modal-title %}</h1>
@@ -10,10 +10,12 @@
         <div class="modal-body text-center">
             {% block modal-body %} {% endblock modal-body %}
         </div>
+        {% block footer %}
         <div class="modal-footer">
             {% block btn-action %} {% endblock btn-action %}
             <button type="button" class="btn btn-secondary btn-sm btn-modal" data-bs-dismiss="modal">Close</button>
         </div>
+        {% endblock footer %}
       </div>
     </div>
 </div>
