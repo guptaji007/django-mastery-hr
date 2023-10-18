@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect  # redirect the page after submit
 from django.contrib import messages  # send alert message to frontend
 from django.core.mail import EmailMultiAlternatives  # required to send mails
 from django.template import loader  # render templates on email body
-from .models import Registered_email, Support
+from .models import Registered_email, Support, Message
 from django.contrib.auth.decorators import (
     login_required,
 )  # Login required to access private pages
@@ -52,6 +52,19 @@ def support(request):
             return HttpResponseRedirect("/")
     else:
         return render(request, "support.html")
+
+
+# Message View
+def add_message(request):
+    if request.method == "POST":
+        if request.POST.get("message"):
+            message = Message()
+            message.text = request.POST.get("message")
+            message.save()
+            messages.success(request, "Message sent successfully !")
+            return HttpResponseRedirect("/")
+    else:
+        return render(request, "home.html")
 
 
 # ================= RESUMES ====================

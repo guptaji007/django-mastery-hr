@@ -22,7 +22,7 @@ class Support(models.Model):
 
     OPTION = {
         ("I lost my account", "I lost my account"),
-        ("My password does not worl", "My password does not worl"),
+        ("My password does not world", "My password does not world"),
         ("Update resume", "Update resume"),
         ("Others", "Others"),
     }
@@ -44,3 +44,19 @@ class Support(models.Model):
 
     def __str__(self):
         return self.person
+
+# Message
+class Message(models.Model):
+    SITUATION = {
+        ("Read", "Read"),
+        ("Unread", "Unread"),
+    }
+    id = models.IntegerField(primary_key=True)
+    text = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    situation = models.CharField(
+        max_length=50, null=True, choices=SITUATION, default="Unread"
+    )
+
+    def __str__(self):
+        return self.text

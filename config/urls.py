@@ -15,6 +15,8 @@ urlpatterns = [
     path("login/", include("django.contrib.auth.urls")),
     # Path to Support
     path("support/", views.support, name="support"),
+    # Path to Message
+    path("add_message/", views.add_message, name="add_message"),
     # ============= SEND EMAIL =====================================
     # Path to send frontend form
     path("email_frontend/", views.email_frontend, name="email_frontend"),

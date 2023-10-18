@@ -329,6 +329,19 @@
         });
     </script>
 
+    <!-- Dependent Select Option -->
+    <script>
+        function req() {
+            if(document.getElementById('choose').value!="")
+            {
+                document.getElementById('dependent').disabled = false;
+            }
+            else {
+                document.getElementById('dependent').disabled = true;
+            }
+        }
+    </script>
+
     <!-- Static JS -->
     <script src="{% static 'js/script.js' %}"></script>
 </body>
