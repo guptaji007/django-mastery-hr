@@ -67,6 +67,11 @@ def add_message(request):
         return render(request, "home.html")
 
 
+# FAQ View
+def faq(request):
+    return render(request, "faq.html")
+
+
 # ================= RESUMES ====================
 # Frontend From View
 def email_frontend(request):
@@ -203,8 +208,53 @@ def email_fullstack(request):
         return HttpResponseRedirect("/")
 
 
+# Intern From View
+def email_intern(request):
+    if request.method == "POST":
+        # Check if email already exist in DB
+        email = request.POST["email"]
+        if Registered_email.objects.filter(email=email).exists():
+            messages.error(request, "We already have your resume in our DB.")
+            return HttpResponseRedirect("/opportunities")
+    else:
+        name = request.POST.get("name")
+        age = request.POST.get("age")
+        email = request.POST.get("email")
+        phone = request.POST.get("phone")
+        address = request.POST.get("address")
+        experience = request.POST.get("experience")
+        skills = request.POST.get("skills")
+
+        # Register inside DB
+        contact = Registered_email()
+        contact.email = email
+        contact.save()
+
+        template = loader.get_template("resume_form.txt")
+        context = {
+            "name": name,
+            "age": age,
+            "email": email,
+            "phone": phone,
+            "address": address,
+            "experience": experience,
+            "skills": skills,
+        }
+        message = template.render(context)
+        email = EmailMultiAlternatives(
+            "Intern - Canidate", message, "Intern Opportunity", ["demo@gmail.com"]
+        )
+        email.content_subtype = "html"
+        file = request.FILES["file"]
+        email.attach(file.name, file.read(), file.content_type)
+        email.send()
+        messages.success(request, "Intern Resume Sent Successfully !")
+        return HttpResponseRedirect("/")
+
+
 # ================= BACKEND SECTION ====================
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 @login_required(login_url="login")
 def backend(request):
-    return render(request, "backend.html")
+    total = Registered_email.objects.all().count()
+    return render(request, "backend.html", {"count": total})

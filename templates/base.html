@@ -95,7 +95,7 @@
                 <div class="d-grid gap-2">
                     {% block sidebar-links %}
                     <a href="{% url 'backend' %}" class="btn btn-warning">Login</a>
-                    <a href="#" class="btn btn-secondary">FAQ</a>
+                    <a href="{% url 'faq' %}" class="btn btn-secondary">FAQ</a>
                     <hr>
                     <a class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#popSupportModal">
                         <i class="fas fa-headset"></i>&nbsp;&nbsp; Support
@@ -114,11 +114,14 @@
         {% include 'modals/forms/formFrontend.html' %}
         {% include 'modals/forms/formBackend.html' %}
         {% include 'modals/forms/formFullstack.html' %}
+        {% include 'modals/forms/formIntern.html' %}
         <!-- Others -->
         {% include 'modals/others/logout.html' %}
         {% include 'modals/others/msgForm.html' %}
         {% include 'modals/others/msgSupport.html' %}
         {% include 'modals/others/popSupport.html' %}
+        <!-- Backend -->
+        {% include 'modals/backend/candidate.html' %}
     </div>
     <!-- End Wrapper -->
 
@@ -215,10 +218,11 @@
 
     <!-- Clear the modal form data when user click outside modal or close it -->
     <script>
-        $("#frontendModal, #backendModal, #fullstackModal").on("hidden.bs.modal", function () {
+        $("#frontendModal, #backendModal, #fullstackModal, #internModal").on("hidden.bs.modal", function () {
             $("#frontendModal form")[0].reset();
             $("#backendModal form")[0].reset();
             $("#fullstackModal form")[0].reset();
+            $("#internModal form")[0].reset();
         });
     </script>
 
@@ -273,6 +277,15 @@
             var skills3 = $("#skills3").val();
             var file3 = $("#file3").val();
 
+            var name4 = $("#name4").val();
+            var age4 = $("#age4").val();
+            var email4 = $("#email4").val();
+            var phone4 = $("#phone4").val();
+            var address4 = $("#address4").val();
+            var experience4 = $("#experience4").val();
+            var skills4 = $("#skills4").val();
+            var file4 = $("#file4").val();
+
             if ((name != "") && (age != "") && (email != "") && (phone != "") &&
                 (address != "") && (experience != "") && (skills != "") && (file != "")) {
                 $(".close-modal").modal("hide");
@@ -285,6 +298,11 @@
 
             if ((name3 != "") && (age3 != "") && (email3 != "") && (phone3 != "") &&
                 (address3 != "") && (experience3 != "") && (skills3 != "") && (file3 != "")) {
+                $(".close-modal").modal("hide");
+            }
+
+            if ((name4 != "") && (age4 != "") && (email4 != "") && (phone4 != "") &&
+                (address4 != "") && (experience4 != "") && (skills4 != "") && (file4 != "")) {
                 $(".close-modal").modal("hide");
             }
         });

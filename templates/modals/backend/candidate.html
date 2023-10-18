@@ -1,0 +1,19 @@
+{% extends 'modals/backend/base.html' %}
+
+<!-- Modal ID -->
+{% block modal-id %} id="candidateModal" {% endblock modal-id %}
+
+<!-- Modal Title -->
+{% block modal-title %}
+<i class="text-success fas fa-user-alt"></i>&nbsp; Total of Candidates
+{% endblock modal-title %}
+
+<!-- Modal Body -->
+{% block modal-body %}
+<h1 class="text-success text-center" style="font-size: 100px;">
+    {{ count }}
+</h1>
+{% endblock modal-body %}
+
+<!-- Modal Btn Action -->
+{% block btn-action %} {% endblock btn-action %}

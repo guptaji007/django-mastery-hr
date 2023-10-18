@@ -278,3 +278,15 @@ body {
     right: 20px;
     width: 400px;
 }
+
+/* FAQ CSS */
+.accordion-button:not(.collapsed) {
+    color: #111 !important;
+    background-color: #fff3cd;
+    box-shadow: inset 0 -1px 0 rgba(0, 0, 0, .125);
+    font-weight: bold !important;
+}
+
+.accordion-button:focus {
+    box-shadow: 0 0 8px rgba(250, 190, 88, 1) !important;
+}

@@ -1,0 +1,30 @@
+{% extends 'modals/forms/base.html' %}
+
+<!-- Modal ID -->
+{% block modal-id %} id="internModal" {% endblock modal-id %}
+
+<!-- Modal Title -->
+{% block modal-title %}<i class="fab fa-node-js"></i>&nbsp; Intern Opportunity {% endblock modal-title %}
+
+<!-- Form Action -->
+{% block action %} action="/email_intern" {% endblock action %}
+
+<!-- Form Validation -->
+{% block validation %} onsubmit="return validateForm4()" {% endblock validation %}
+
+<!-- Form Input IDs -->
+{% block id-name %} id="name4" {% endblock id-name %}
+
+{% block id-age %} id="age4" {% endblock id-age %}
+
+{% block id-email %} id="email4" {% endblock id-email %}
+
+{% block id-phone %} id="phone4" {% endblock id-phone %}
+
+{% block id-address %} id="address4" {% endblock id-address %}
+
+{% block id-experience %} id="experience4" {% endblock id-experience %}
+
+{% block id-skills %} id="skills4" {% endblock id-skills %}
+
+{% block id-file %} id="file4" {% endblock id-file %}

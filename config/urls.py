@@ -17,6 +17,8 @@ urlpatterns = [
     path("support/", views.support, name="support"),
     # Path to Message
     path("add_message/", views.add_message, name="add_message"),
+    # Path to FAQ
+    path("faq/", views.faq, name="faq"),
     # ============= SEND EMAIL =====================================
     # Path to send frontend form
     path("email_frontend/", views.email_frontend, name="email_frontend"),
@@ -24,6 +26,8 @@ urlpatterns = [
     path("email_backend/", views.email_backend, name="email_backend"),
     # Path to send fullstack form
     path("email_fullstack/", views.email_fullstack, name="email_fullstack"),
+    # Path to send intern form
+    path("email_intern/", views.email_intern, name="email_intern"),
     # ================= BACKEND SECTION ====================
     path("backend/", views.backend, name="backend"),
 ]
