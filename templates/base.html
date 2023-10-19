@@ -109,12 +109,14 @@
         <!-- Page Content -->
         {% block content %}{% endblock content %}
 
-        <!-- Includes Modals -->
+        <!-- Includes Modals in Base Page -->
+
         <!-- Forms Modal -->
         {% include 'modals/forms/formFrontend.html' %}
         {% include 'modals/forms/formBackend.html' %}
         {% include 'modals/forms/formFullstack.html' %}
         {% include 'modals/forms/formIntern.html' %}
+
         <!-- Others -->
         {% include 'modals/others/logout.html' %}
         {% include 'modals/others/msgForm.html' %}
@@ -122,8 +124,31 @@
         {% include 'modals/others/popSupport.html' %}
         {% include 'modals/others/infoJobs.html' %}
         {% include 'modals/others/message.html' %}
+
         <!-- Backend -->
         {% include 'modals/backend/candidate.html' %}
+
+        <!-- Opportunities Closed [vacancies] -->
+        <!-- One Vacancy -->
+        {% include 'modals/closed/1_vacancy/closedFrontend.html' %}
+        {% include 'modals/closed/1_vacancy/closedBackend.html' %}
+        {% include 'modals/closed/1_vacancy/closedFullstack.html' %}
+        {% include 'modals/closed/1_vacancy/closedIntern.html' %}
+        <!-- Two Vacancies -->
+        {% include 'modals/closed/2_vacancies/closedBack_Full.html' %}
+        {% include 'modals/closed/2_vacancies/closedBack_Intern.html' %}
+        {% include 'modals/closed/2_vacancies/closedFront_Back.html' %}
+        {% include 'modals/closed/2_vacancies/closedFront_Full.html' %}
+        {% include 'modals/closed/2_vacancies/closedFront_Intern.html' %}
+        {% include 'modals/closed/2_vacancies/closedFull_Intern.html' %}
+        <!-- Three Vacancies -->
+        {% include 'modals/closed/3_vacancies/closedBack_Full_Intern.html' %}
+        {% include 'modals/closed/3_vacancies/closedFront_Back_Full.html' %}
+        {% include 'modals/closed/3_vacancies/closedFront_Back_Intern.html' %}
+        {% include 'modals/closed/3_vacancies/closedFront_Full_Intern.html' %}
+        <!-- All Vacancies -->
+        {% include 'modals/closed/all_vacancies/closedAll.html' %}
+        {% include 'modals/closed/all_vacancies/closedAllTimer.html' %}
     </div>
     <!-- End Wrapper -->
 
@@ -363,6 +388,7 @@
     </script>
 
     <!-- Countdown Timer -->
+    {% block countdown %}
     {% for countdown in countdowns %}
         <script>
             var dateTime = new Date('{{ countdown.timer }}').getTime();
@@ -384,10 +410,39 @@
                     clearInterval(control);
                     document.getElementById("timer").innerHTML  = "Closed Job Vacancies";
                     document.getElementById("timer").style.color = "red";
+
+                    // Disable all jobs vacancies when count is over
+                    $(".btn-off").prop("disabled", true).css({'color':'white', 'border-color':'white'});
+
+                    // Hide the qty job vacancies (inside the modal)
+                    $(".qty").css("dispaly", "none");
+                    
+                    // Open the modal (All vacancies closed)
+                    $("#closedAllTimer").modal('show');
+
+                    // Disable the send button (inside the modal forms)
+                    $(".btn-send").prop("disabled", true);
+
+                    // Hide others modals
+                    $("#closed_frontend, #closed_backend, #closed_fullstack, #closed_intern," +
+                    "#closedBack_Full, #closedBack_Intern, #closedFront_Back, #closedFront_Full," +
+                    "#closedFront_Intern, #closedFull_Intern, #closedBack_Full_Intern, #closedFront_Back_Full," +
+                    "#closedFront_Back_Intern, #closedFront_Full_Intern, #closedAll").modal('hide');
                 }
             }, 1000);
         </script>
     {% endfor %}
+    {% endblock countdown %}
+
+    <!-- Script to call the closed modals -->
+    <script>
+        setTimeout(function() {
+            var modal = document.querySelector("#Mymodal");
+            if(modal) {
+                modal.click();
+            }
+        }, 1 * 100); // 1s = 1000
+    </script>
 
     <!-- Static JS -->
     <script src="{% static 'js/script.js' %}"></script>

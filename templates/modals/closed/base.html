@@ -1,0 +1,28 @@
+<!-- Modal -->
+<div class="modal fade" {% block modal-id %}{% endblock modal-id %} tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title fs-5" id="exampleModalLabel">
+                    {% block title-root %}
+                        <i class="text-danger fas fa-code"></i>&nbsp;
+                        {% block modal-title %}{% endblock modal-title %} (closed)
+                    {% endblock title-root %}
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center mb-3 mt-3">
+                <div class="mb-4">
+                    <i class="text-danger far fa-times-circle fa-5x"></i>
+                </div>
+                {% block closed-root %}
+                    Vacancies for {% block job-closed %}{% endblock job-closed %} 
+                    developers have been closed due to filling of all available vacancies.
+                {% endblock closed-root %}
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline-secondary btn-sm btn-modal" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
