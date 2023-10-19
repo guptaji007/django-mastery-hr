@@ -46,8 +46,10 @@
 </div>
 {% endfor %}
 <hr>
-<div class="mt-4 mb-xxl-3 ">
+{% for countdown in countdowns %}    
+<div class="mt-4 mb-3 ">
     <h6 class="card p-2 text-light bg-danger mb-4">Job Vacancies will be close in: </h6>
-    <span class="text-center" style="font-size: 20px;">18/10/2023 04:30:00</span>
+    <span id="timer" class="text-center" style="font-size: 20px;">{{ counter.timer|date:"d M, Y H:i:s" }}</span>
 </div>
+{% endfor %}
 {% endblock modal-body %}

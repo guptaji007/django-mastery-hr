@@ -229,6 +229,9 @@ body {
         right: 15px;
         bottom: 62px;
     }
+    #input-timer {
+        font-size: 20px;
+    }
 }
 
 /* Login Page CSS */
@@ -289,4 +292,9 @@ body {
 
 .accordion-button:focus {
     box-shadow: 0 0 8px rgba(250, 190, 88, 1) !important;
+}
+
+/* Countdown CSS */
+#input-timer {
+    font-size: 25px;
 }

@@ -35,4 +35,6 @@ urlpatterns = [
     path("edit_notepad/", views.edit_notepad, name="edit_notepad"),
     # Path to Job Vacancies
     path("edit_vacancies/", views.edit_vacancies, name="edit_vacancies"),
+    # Path to Countdown
+    path("edit_countdown/", views.edit_countdown, name="edit_countdown"),
 ]

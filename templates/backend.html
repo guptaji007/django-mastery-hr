@@ -50,17 +50,20 @@
                                 <i class="fas fa-users fa-3x"></i>
                                 <br><br>Opportunities
                         </button>
-                        {% include 'modals/backend/vacancies.html' %} 
+                        {% include 'modals/backend/vacancies.html' %}
                         {% endfor %}
                     </div>
                 </div>
                 <!-- Card 3 -->
                 <div class=" col-xl-3 col-sm-6 col-6 p-1">
                     <div class="card" style="background-color: transparent;">
-                        <button class="btn btn-danger btn-lg jobs">
+                        {% for countdown in countdowns %}
+                        <button class="btn btn-danger btn-lg jobs" data-bs-toggle="modal" data-bs-target="#countdownModal{{ countdown.pk }}">
                             <i class="fas fa-clock fa-3x"></i>
                             <br><br>Countdown
                         </button>
+                        {% include 'modals/backend/countdown.html' %}
+                        {% endfor %}
                     </div>
                 </div>
                 <!-- Card 4 -->

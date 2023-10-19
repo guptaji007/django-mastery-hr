@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect  # redirect the page after submit
 from django.contrib import messages  # send alert message to frontend
 from django.core.mail import EmailMultiAlternatives  # required to send mails
 from django.template import loader  # render templates on email body
-from .models import Registered_email, Support, Message, Notepad, Vacancies
+from .models import Registered_email, Support, Message, Notepad, Vacancies, Countdown
 from django.contrib.auth.decorators import (
     login_required,
 )  # Login required to access private pages
@@ -21,7 +21,10 @@ def home(request):
 # Opportunities View
 def opportunities(request):
     myJob = Vacancies.objects.all()
-    return render(request, "opportunities.html", {"vacancies": myJob})
+    myCountdown = Countdown.objects.all()
+    return render(
+        request, "opportunities.html", {"vacancies": myJob, "countdowns": myCountdown}
+    )
 
 
 # Support View
@@ -264,10 +267,16 @@ def backend(request):
     total = Registered_email.objects.all().count()
     myNote = Notepad.objects.all()
     myJob = Vacancies.objects.all()
+    myCountdown = Countdown.objects.all()
     return render(
         request,
         "backend.html",
-        {"count": total, "notepads": myNote, "vacancies": myJob},
+        {
+            "count": total,
+            "notepads": myNote,
+            "vacancies": myJob,
+            "countdowns": myCountdown,
+        },
     )
 
 
@@ -298,4 +307,17 @@ def edit_vacancies(request):
             vacancy.intern = request.POST.get("intern")
             vacancy.save()
             messages.success(request, "Job Vacancies Updated!")
+            return HttpResponseRedirect("/backend")
+
+
+# Countdown View
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
+@login_required(login_url="login")
+def edit_countdown(request):
+    if request.method == "POST":
+        countdown = Countdown.objects.get(id=request.POST.get("id"))
+        if countdown != None:
+            countdown.timer = request.POST.get("timer")
+            countdown.save()
+            messages.success(request, "Countdown Updated Successfully!")
             return HttpResponseRedirect("/backend")

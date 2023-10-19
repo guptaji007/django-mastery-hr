@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Registered_email, Support, Message, Notepad, Vacancies
+from .models import Registered_email, Support, Message, Notepad, Vacancies, Countdown
 from django.utils.html import format_html
 
 
@@ -86,3 +86,10 @@ class VacanciesAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Vacancies, VacanciesAdmin)
+
+
+class CountdownAdmin(admin.ModelAdmin):
+    list_display = ["timer"]
+
+
+admin.site.register(Countdown, CountdownAdmin)
